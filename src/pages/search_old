@@ -1,0 +1,92 @@
+import React, { Component} from 'react';
+import { BrowserRouter as Router, withRouter, Route, Link } from 'react-router-dom';
+import '../App.css';
+class Search extends Component{
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      resualts: [],
+      words: '',
+      catagory: '',
+      loading: "don't loading",       
+      error: null, 
+      checkOut: false,
+      test: [{"id":42,"title":"EG1","body":"20"},{"id":43,"title":"TSA2","body":"20"},{"id":43,"title":"TSA3 ","body":"20"}]
+    };
+  }
+
+componentDidMount() {
+  this.funFilter()    
+}
+
+
+  funFilter = _ =>{
+    const {words} = this.state;
+    fetch(`http://localhost:4000/search?words=${words}`)
+    .then(response => response.json())
+    .then(response => this.setState({resualts: response.data}))
+    .catch(err => console.error(err)) 
+    //alert(this.state.catagory)
+  }
+
+ checkCheckOut = (barcode, checkOutBarcode) =>{ 
+  var checkOutre
+   if(barcode == checkOutBarcode){
+    checkOutre = <p className='Display'>book NOT here</p>
+     //this.setState({checkOut: true});
+   }else{
+    checkOutre = <p className='dontDisplay' style={{display: 'none'}}>book is here</p>
+     
+     //this.setState({checkOut: false});
+   }
+   return checkOutre;
+    }               
+
+
+  render () {
+      const {resualts, words, test, checkOut} = this.state
+
+    return(
+        <div>
+          <div>
+              <a href="/">Login-</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="/test">Test</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="/Excel_json">Excel_json</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="/home">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="/search">Search</a>
+            </div>
+
+            
+        <input style={{width: 600, height: 60,  textAlign: 'left', fontSize: 20, color: 'black', padding: 10,marginLeft: 200,}}   
+        onChange={e => this.setState({ words :e.target.value})} /> 
+        <select onChange={e => this.setState({ catagory :e.target.value})}>
+          <optgroup>
+            <option>Book Names</option>
+            <option>Author</option>
+            <option>Book Serial Code</option>
+          </optgroup>
+        </select>
+       <button onClick={this.funFilter}>Search</button>
+
+         {resualts.map(books =>
+         <div>
+           
+         <p>________{books.barcode}________________{books.author}________________{books.title}</p>
+          {test.map(te => 
+            this.checkCheckOut(books.barcode, te.author)
+            )}
+            <p></p>
+         </div>)
+         }
+         
+         <p>{words}</p>
+ 
+       </div>
+   
+
+    );
+  }
+}
+
+export default withRouter(Search);

@@ -1,0 +1,82 @@
+SQL sample
+
+CREATE TABLE books (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+barcode VARCHAR(50)  NULL,
+author VARCHAR(225) NULL,
+title VARCHAR(225) NULL,
+catogary VARCHAR(30),
+publisher VARCHAR(30),
+pub_place VARCHAR(30),
+pub_year VARCHAR(30),
+isbn VARCHAR(50),
+vol_no VARCHAR(10),
+bk_edition VARCHAR(10),
+bk_pages VARCHAR(10),
+bk_contact VARCHAR(50),
+bk_coast VARCHAR(10),
+bk_translation VARCHAR(50)
+CHARACTER SET utf8 COLLATE utf8_bin);
+
+
+CREATE TABLE members(
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+regno VARCHAR(50)  NULL,
+username VARCHAR(225) NULL,
+firstname VARCHAR(225) NULL,
+title VARCHAR(225) NULL,
+address TEXT,
+currentAddress TEXT,
+city VARCHAR(30),
+state VARCHAR(30),
+zipcode VARCHAR(30),
+country VARCHAR(30),
+email VARCHAR(30),
+phone VARCHAR(30),
+dateofbirth VARCHAR(30),
+categorycode VARCHAR(30),
+dateenrolled TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+dateexpiry VARCHAR(30),
+accountLevel VARCHAR(30),
+sex VARCHAR(30),
+password VARCHAR(30),
+opacnote TEXT
+CHARACTER SET utf8 COLLATE utf8_bin);
+
+
+CREATE TABLE check_out(
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+member_brcode VARCHAR(30) NOT NULL,
+book_brcode VARCHAR(30) NOT NULL,
+given_by VARCHAR(30) NOT NULL,
+available BOOLEAN NOT NULL,
+ckeck_out_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+due_date TIMESTAMP 
+);
+
+CREATE TABLE library(
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+library_name VARCHAR(30) NOT NULL,
+library_full_form VARCHAR(110) NOT NULL,
+due_date VARCHAR(30) NOT NULL
+);
+
+
+
+The project was built assuming it is hosted at the server root.
+You can control this with the homepage field in your package.json.
+For example, add this to build it for GitHub Pages:
+
+  "homepage" : "http://myname.github.io/myapp",
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  yarn global add serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://bit.ly/CRA-deploy
+
+Done in 210.03s.

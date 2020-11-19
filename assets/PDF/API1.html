@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<h1>The XMLHttpRequest Object</h1>
+<select id="catogary">
+  <option>HSS</option>
+  <option>VSS</option>
+</select>
+<button type="button" onclick="loadDoc()">Change Content</button>
+
+<div id="demo">
+</div>
+
+<div id="root">
+</div>
+
+<script>
+function loadDoc() {
+  var request = new XMLHttpRequest();
+  var catogary = document.getElementById('catogary').value;
+
+  
+  request.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var data = this.response;
+ //document.getElementById("demo").innerHTML = data;
+
+   .then(function(data) {
+    let authors = data.results;
+    alert(authors)
+    return authors.map(function(author) {
+      let li = createNode('li'),
+          //img = createNode('img'),
+          span = createNode('span');
+      //img.src = author.picture.medium;
+      span.innerHTML = `${author.barcod} ${author.barcod}`;
+      //append(li, img);
+      append(li, span);
+      append(ul, li);
+    })
+  })
+  .catch(function(error) {
+    console.log(error);
+  }); 
+
+
+
+  request.open("GET", "http://localhost:4000/barcods?catogary="+catogary, true);
+  request.send();
+
+}
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+
+  .login{
+    box-Shadow: "10px 100px 200px #1a1712";
+    background-color: #1a1712;
+    padding: 25px;
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 25vh;
+    height: 100vh;
+    width: 25%;
+
+  }
+  .login input, .err{margin: 8px; padding: 20px;}
+  
+  .library{
+    background-Image: url('../Library_background.jpg');
+    background-Position: 'center';
+    background-size: 'cover';
+    overflow: 'hidden';
+    height: 100vh;
+    width: 75%;
+    position: absolute;
+    left: 0px;
+  }
+
+
+  .hr{background-color: #1a1712;}
+
+
+  
+  .college{
+    position: absolute;
+    bottom: 10%;
+    color: aliceblue;
+    text-align: left;
+    margin-left: 5%;
+  } 
+    .logo{
+      width: 200px;
+      text-align: left;
+      margin-bottom: -15px;
+    }
+    .h1{color: aliceblue;
+      font-weight: 500;
+      margin: 0px;
+      font-size: 25px;
+    }
+  
+    .name{font-size: 100px;
+      font-weight: 400;
+      color: aliceblue;
+      margin-bottom: 5px;
+      margin-bottom: -10px;
+    }

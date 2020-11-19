@@ -1,0 +1,39 @@
+
+  
+.dueDate{position: absolute;
+  top: 12vh;
+  right: 0px;
+  z-index: 1;
+  float: right;
+  margin-right: 100px;}
+  .dueDate input{width: 20px; background-color: darkolivegreen;}
+
+  
+ .pagesLink {float: left;  position: relative; top: 3vh; padding-left: 100px;}
+ .pagesLink a{color: brown;
+            padding: 5px; margin: 5px; padding: 5px;}
+
+.admin{float: right;
+  position: relative;  top:2vh;
+  margin-right:  50px;}
+
+
+
+
+.input_ {width: 100%; margin-right: 10px; margin-bottom: 10px; }
+#input{font-size: 20px; padding: 20px; border-radius: 0px; border: 1px solid #5555552d;}
+#btn{width: 100%; font-size: 20px; font-weight: 600; border-radius: 0px;
+    padding-top: 10px; padding-bottom: 30px; padding-right: 20px; padding-left: 20px; line-height: 0px;
+    background:  #1a1712; color:  #ffd35a;} #btn:hover{letter-spacing: 1px; border: 0px;}
+
+
+
+  .card img{width: 100px; height: auto;margin-right: 10px; border-radius: 5%; rotate: -90deg}
+  .card{ padding: 0px; width: 100%; display: inline-block; }
+  .member_details{ width: 50%; float: left;
+                font-size: 15px; }
+  .book_details{ width: 50%; float: right;}
+
+  .member_details a{color: rgb(37, 37, 37);}
+  .details{display: block; line-height: 0px;}
+  .details h4{font-weight: 700; text-decoration: underline; margin-bottom: 30px;}

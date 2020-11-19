@@ -1,0 +1,13 @@
+.form{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.form input, textarea{
+    background-color: transparent;
+    height: 40px;
+    margin-bottom: 20px;
+font-size: 15px;}
+textarea{height: 50px;}
+

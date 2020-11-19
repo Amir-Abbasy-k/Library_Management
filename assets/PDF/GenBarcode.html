@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="JsBarcode.all.js"></script>
+
+
+
+	<style type="text/css">
+		#barcodes img{border: 2px solid blue;}
+	</style>
+	</head>
+
+
+
+
+<body>
+	<div id="barcodes">
+		
+
+	</div>
+
+<!--svg id="example"></svg>
+<canvas id="example"></canvas
+<img id="example"/-->
+
+<button onclick="afterText()">Insert after</button>
+
+
+</body>
+	<script type="text/javascript">
+
+	//JsBarcode("#barcode", "Hi!");
+	// or with jQuery
+	//$("#example").JsBarcode("jQuery Script");
+/* optionns of barcodes
+  $("#example").JsBarcode("jQuery Script",{
+  width: 200,
+  height: 100,
+  format: "auto",
+  displayValue: true,
+  fontOptions: "",
+  font: "monospace",
+  text: undefined,
+  textAlign: "center",
+  textPosition: "bottom",
+  textMargin: 2,
+  fontSize: 20,
+  background: "#ffffff",
+  lineColor: "#000000",
+  margin: 10,
+  marginTop: undefined,
+  marginBottom: undefined,
+  marginLeft: undefined,
+  marginRight: undefined,
+  valid: function valid() {}
+  }
+
+  65 - codes perPage
+  codes.length-1
+*/
+ var codes =  ["SALPE1234", "SALPE1236", "SALPE1237","SALPE1234","SALPE1234", "SALPE1236", "SALPE1237","SALPE1234","SALPE1234", "SALPE1236", "SALPE1237","SALPE1234","SALPE1234", "SALPE1236", "SALPE1237","SALPE1234","SALPE1234", "SALPE1236", "SALPE1237","SALPE1234","SALPE1234", "SALPE1236", "SALPE1237","SALPE1234","SALPE1234", "SALPE1236", "SALPE1237","SALPE1234","SALPE1234", "SALPE1236", "SALPE1237","SALPE1234","SALPE1234", "SALPE1236", "SALPE1237","SALPE1234","SALPE1234", "SALPE1236", "SALPE1237","SALPE1234","SALPE1234", "SALPE1236", "SALPE1237","SALPE1234","SALPE1234", "SALPE1236", "SALPE1237","SALPE1234","SALPE1234", "SALPE1236", "SALPE1237","SALPE1234","SALPE1234", "SALPE1236","SALPE1255", "SALPE1237","SALPE1234","SALPE1234", "SALPE1236","SALPE1255", "SALPE1237","SALPE1234","SALPE1234", "SALPE1236","SALPE1265"]; 
+
+function afterText() {
+
+for(var i = 0; i<= codes.length-1;){
+
+		  var para = document.createElement("img");
+		  //para.innerHTML = "This is a paragraph.";
+		  var att = document.createAttribute("id");
+		  att.value = codes[i];
+		  para.setAttributeNode(att);
+
+		  //alert(i);
+		  document.getElementById("barcodes").appendChild(para);
+		  JsBarcode("#"+codes[i], codes[i]);
+		  //$("#"+codes[i]).JsBarcode(codes[i],{
+		  	//background: "#096",});
+		   i++;
+		  
+
+	}
+	 alert(i+'barcods');
+}
+/*
+$("#example").JsBarcode("jQuery Script",{
+ margin: 100
+});
+*/
+	</script>
+</html>

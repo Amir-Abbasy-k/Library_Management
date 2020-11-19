@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<style type="text/css">
+	.canvas__container {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.canvas__canvas {
+  height: 100%;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+.canvas__mirror {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%; 
+}
+
+</style>
+<body>
+
+
+<canvas id="canvas" width=240 height=240 style="background-color:#808080;">
+</canvas>
+<p></p>
+<a id="download" download="myImage.jpg" href="" onclick="download_img(this);">Download to myImage.jpg</a>
+
+</body>
+	
+
+<script type="text/javascript">
+	var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+
+//ctx.fillRect(ox / 2, oy / 2, ox, oy);
+//ctx.drawImage('myimg2.jpg', 15, 20);
+var img = new Image();
+               img.src = 'myimg2.jpg';
+               
+               img.onload = function() {
+                  ctx.drawImage(img,0,0);
+                 
+
+      };
+download_img = function(el) {
+  var image = canvas.toDataURL("image/jpg");
+  el.href = image;
+};
+
+</script>
+
+
+</html>

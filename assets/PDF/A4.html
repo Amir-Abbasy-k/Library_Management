@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>A4</title>
+  <script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+  <script type="text/javascript" src="JsBarcode.all.js"></script>
+
+
+  <!-- Normalize or reset CSS with your favorite library -->
+  <link rel="stylesheet" href="normalize.min.css">
+
+  <!-- Load paper.css for happy printing -->
+  <link rel="stylesheet" href="paper.css">
+
+  <!-- Set page size here: A5, A4 or A3 -->
+  <!-- Set also "landscape" if you need -->
+  <style>@page { size: A4 }</style>
+  <style type="text/css">
+    .barcodes{margin-left: 0.47cm; margin-top:1.10cm}
+    .barcodes canvas{border: 0px solid red;
+                width: 3.184cm; height: 1.510cm;
+                margin-left: 0.33cm; margin-right: 0.33cm;
+                margin-top: 0cm;  margin-bottom: 0.75cm;}
+
+.sheet{width:21cm; height:29.7cm;}
+
+  
+  </style>
+</head>
+
+<!-- Set "A5", "A4" or "A3" for class name -->
+<!-- Set also "landscape" if you need -->
+<!--  <button onclick="afterText()">Insert after</button> -->
+<body class="A4" onload="afterText()">
+<main class="A4">
+<section class="sheet padding-0mm">
+
+      <div id="barcodes" class="barcodes">
+        
+
+      </div>
+    <!--svg id="example"></svg>
+    <canvas id="example"></canvas>
+    <img id="example"/-->
+
+  </section>
+    <!-- PAGE TWO -->
+   <section class="sheet padding-10mm">
+
+
+    <div id="barcodes2" class="barcodes">
+        
+
+    </div>
+    <article>This is the second sheet.</article>
+
+  </section>
+
+</body>
+<script type="text/javascript">
+function afterText() {
+   // var catogary = document.getElementById("catogary").value;
+    
+     fetch('http://localhost:4000/barcods?catogary=AA')
+    .then(response => response.json())
+    .then(data => {
+    var data = data;
+  for(var i=0;i<=(data.data.length-1);i++){
+        var img = document.createElement("canvas");
+        var att = document.createAttribute("id");
+        att.value = data.data[i].barcode;
+        img.setAttributeNode(att);
+        document.getElementById("barcodes").appendChild(img); 
+
+   JsBarcode("#"+data.data[i].barcode, data.data[i].barcode);
+
+  }
+
+   for(var i=0;i<=(data.data.length-1);i++){
+        var img = document.createElement("canvas");
+        var att = document.createAttribute("id");
+        att.value = data.data[i].barcode;
+        img.setAttributeNode(att);
+        document.getElementById("barcodes2").appendChild(img); 
+
+   JsBarcode("#"+data.data[i].barcode, data.data[i].barcode);
+
+  }
+
+
+})
+.catch(error => console.error(error))
+
+}
+
+/*
+
+   var obj = JSON.stringify(data)
+   var res = obj.substr(8, obj.length - 9)
+   var dataParse = JSON.parse(res)
+   //window.alert(dataParse[1].barcode)
+   //alert(dataParse.length)
+  //document.getElementById("demo").innerHTML = dataParse[1].barcode;
+dataParse.map(item => {
+ console.log(item.barcode);
+// amir make canvas img or svg if any problum occuring and just change the css property also
+      var img = document.createElement("canvas");
+      //para.innerHTML = "This is a paragraph.";
+      var att = document.createAttribute("id");
+      att.value = item.barcode;
+      img.setAttributeNode(att);
+      document.getElementById("barcodes").appendChild(img);
+      
+      //JsBarcode("#"+item.barcode, item.barcode);
+      JsBarcode("#"+item.barcode, item.barcode);
+
+
+  });*/
+
+
+
+
+  </script>
+
+
+</html>

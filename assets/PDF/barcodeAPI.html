@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<select id="catogary">
+  <option>HSS</option>
+  <option>VSS</option>
+  <option></option>
+</select>
+<button type="button" onclick="loadItems()">Change Content</button>
+<p id="demo"></p>
+</body>
+<script>
+  // https://www.youtube.com/watch?v=Oive66jrwBs
+
+  /*
+  const api_url = 'http://localhost:4000/barcods?catogary=VSS';
+
+async function getISS(){
+  const response  = await fetch(api_url);
+  const data = await response.json();
+  const {barcode} = data;
+  console.log(data.barcode["EG1"]);
+
+  document.getElementById('br').textContent = barcode;
+}
+
+getISS();
+
+*/
+
+  var catogary = document.getElementById("catogary").value;
+function loadItems(){
+    
+     fetch('http://localhost:4000/barcods?catogary='+catogary)
+    .then(response => response.json())
+  .then(data => {
+   // Prints result from `response.json()` in getRequest
+
+  
+   var obj = JSON.stringify(data)
+   var res = obj.substr(8, obj.length - 9)
+   var dataParse = JSON.parse(res)
+   //window.alert(dataParse[1].barcode)
+   alert(dataParse.length)
+
+ //document.getElementById("demo").innerHTML = dataParse[1].barcode;
+
+dataParse.map(item => {
+ console.log(item.barcode);
+ document.getElementById("demo").innerHTML += item.barcode+ '-';
+  });
+
+})
+.catch(error => console.error(error))
+}
+
+
+/*
+  fetch('http://localhost:4000/barcods?catogary=VSS')
+  .then(response => {
+    return response.json()
+
+  })
+  .then(data => {
+  
+        console.log(data)
+         //var obj = JSON.parse(data);
+         //console.log(obj.barcode)
+  }
+  .catch(err => {
+   
+  })
+}
+
+
+/*
+function createNode(element) {
+      return document.createElement(element);
+  }
+
+  function append(parent, el) {
+    return parent.appendChild(el);
+  }
+
+  const ul = document.getElementById('authors');
+  const url = 'http://localhost:4000/barcods?catogary=VSS';
+
+  fetch(url)
+  .then((resp) => resp.json())
+
+  .then(function(data) {
+    let authors = data.resualts;
+    return authors.map(function(author) {
+      let li = createNode('li'),
+          //img = createNode('img'),
+          span = createNode('span');
+     // img.src = author.picture.medium;
+      span.innerHTML = `dsfs`;
+      //span.innerHTML = `${author.barcode.barcode}`;
+
+      //append(li, img);
+      append(li, span);
+      append(ul, li);
+    })
+  })
+  .catch(function(error) {
+    console.log(error);
+  });   
+*/
+
+
+
+  
+</script>
+
+</html>

@@ -1,0 +1,1 @@
+start/min cmd.exe /k "cd public & node server min"

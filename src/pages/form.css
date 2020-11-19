@@ -1,0 +1,24 @@
+
+  .formDetails{width: 100%}
+  .inpt{background-color: transparent;
+    height: 40px;
+    margin-bottom: 20px;}
+    label{color: rgba(109, 105, 112, 0.479)}
+    .formDetails_book .inpt{margin-bottom: 10px;}
+    .top{background-color: transparent; margin-top: 20px;}
+    .left{background-color:transparent; border: 0px; padding: 0px; margin: 0px;
+    width: 49%;
+    float: left;}
+    .right{background-color: rgb(224, 224, 224);
+        width: 49%;
+        float: right;
+    padding: 30px;
+}
+
+    .top img{width: 200px; float: left; margin-right: 20px;}
+
+
+.btn_excel{
+  background-Color: '#096';
+  line-Height:'20px' 
+}

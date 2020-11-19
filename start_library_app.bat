@@ -1,0 +1,1 @@
+start/min cmd.exe /k "npm start" ^& exit
